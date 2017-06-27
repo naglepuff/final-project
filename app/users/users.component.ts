@@ -6,7 +6,7 @@ import {UsersService} from './users.service';
 
 @Component({
     selector: 'users',
-    templateUrl: 'app/users.component.html',
+    templateUrl: 'app/users/users.component.html',
     providers: [UsersService, HTTP_PROVIDERS],
     directives: [ROUTER_DIRECTIVES]
 })

@@ -9,7 +9,7 @@ import {User} from './user';
 
 @Component({
     selector: 'new-user-form',
-    templateUrl: 'app/newuserform.component.html',
+    templateUrl: 'app/users/newuserform.component.html',
     directives: [ROUTER_DIRECTIVES],
     providers: [UsersService, HTTP_PROVIDERS]
 })
@@ -20,8 +20,8 @@ export class NewUserFormComponent implements CanDeactivate, OnInit{
     NEW_TITLE = "New User";
     EDIT_TITLE = "Edit User";
 
-    constructor(fb: FormBuilder, 
-        private _usersService: UsersService, 
+    constructor(fb: FormBuilder,
+        private _usersService: UsersService,
         private _router: Router,
         private _routeParams: RouteParams){
         this.newUserForm = fb.group({

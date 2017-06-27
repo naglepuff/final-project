@@ -56,7 +56,7 @@ System.register(['angular2/core', 'angular2/http', 'angular2/router', './users.s
                 UsersComponent = __decorate([
                     core_1.Component({
                         selector: 'users',
-                        templateUrl: 'app/users.component.html',
+                        templateUrl: 'app/users/users.component.html',
                         providers: [users_service_1.UsersService, http_1.HTTP_PROVIDERS],
                         directives: [router_1.ROUTER_DIRECTIVES]
                     }), 

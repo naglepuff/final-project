@@ -101,7 +101,7 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', 'angular
                 NewUserFormComponent = __decorate([
                     core_1.Component({
                         selector: 'new-user-form',
-                        templateUrl: 'app/newuserform.component.html',
+                        templateUrl: 'app/users/newuserform.component.html',
                         directives: [router_1.ROUTER_DIRECTIVES],
                         providers: [users_service_1.UsersService, http_1.HTTP_PROVIDERS]
                     }), 
