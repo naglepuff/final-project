@@ -25,10 +25,24 @@ System.register(['angular2/http', 'angular2/core', 'rxjs/add/operator/map'], fun
             PostsService = (function () {
                 function PostsService(_http) {
                     this._http = _http;
-                    this.URL = "http://jsonplaceholder.typicode.com/posts/";
+                    this.URL = "http://jsonplaceholder.typicode.com/posts";
                 }
                 PostsService.prototype.getPosts = function () {
                     return this._http.get(this.URL).map(function (res) { return res.json(); });
+                };
+                PostsService.prototype.getCommentsByPostId = function (id) {
+                    return this._http.get(this.commentUrl(id)).map(function (res) { return res.json(); });
+                };
+                PostsService.prototype.getPostsByUserId = function (id) {
+                    return this._http.get(this.postsByUserUrl(id)).map(function (res) { return res.json(); });
+                };
+                //helper method for making comments URL
+                PostsService.prototype.commentUrl = function (id) {
+                    return this.URL + "/" + id + "/comments";
+                };
+                //helper method for making posts by user URL
+                PostsService.prototype.postsByUserUrl = function (id) {
+                    return this.URL + "?userId=" + id;
                 };
                 PostsService = __decorate([
                     core_1.Injectable(), 

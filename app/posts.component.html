@@ -1,11 +1,43 @@
 
 <div class="col-md-6 col-sm-6 col-xl-6">
-    <ul clas="list-group">
-        <h1>Posts</h1>
-        <li 
-            class="list-group-item"
-            *ngFor="#post of posts">
-            {{post.body}}
-        </li>
-    </ul>
+  <ul clas="list-group">
+    <h1>Posts</h1>
+    <select #opt (change)="filterByUserId(opt.value)">
+      <option value="">
+        Select a user...
+      </option>
+      <option *ngFor="#user of users" value="{{user.id}}">{{user.name}}</option>
+    </select>
+    <i class="fa fa-spinner fa-spin fa-3x" *ngIf="postsLoading"></i>
+    <li
+      class="list-group-item"
+      *ngFor="#post of posts"
+      (click)="selectPost(post.id)">
+      {{post.title}}
+    </li>
+  </ul>
+</div>
+
+<div class="col-md-6 col-sm-6 col-xl-6" *ngIf="showDetail">
+  <h1>Details</h1>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">{{selected.title}}</h3>
+    </div>
+    <div class="panel-body">
+      {{selected.body}}
+    </div>
+  </div>
+  <i class="fa fa-spinner fa-spin fa-3x" *ngIf="commentsLoading"></i>
+  <div class="media" *ngFor="#comment of selectedComments">
+    <div class="media-left">
+      <a href="#">
+        <img style="border-radius: 100%" class="media-object" src="http://lorempixel.com/80/80/people/{{comment.id % 10}}" alt="Image">
+      </a>
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading">{{comment.name}}</h4>
+      {{comment.body}}
+    </div>
+</div>
 </div>
