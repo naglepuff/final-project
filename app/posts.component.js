@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map', './posts.service', 'app/users/users.service', './spinner.component'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map', './posts.service', 'app/users/users.service', './pagination.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map', './p
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1, posts_service_1, users_service_1, spinner_component_1;
+    var core_1, http_1, posts_service_1, users_service_1, pagination_component_1;
     var PostsComponent;
     return {
         setters:[
@@ -27,8 +27,8 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map', './p
             function (users_service_1_1) {
                 users_service_1 = users_service_1_1;
             },
-            function (spinner_component_1_1) {
-                spinner_component_1 = spinner_component_1_1;
+            function (pagination_component_1_1) {
+                pagination_component_1 = pagination_component_1_1;
             }],
         execute: function() {
             PostsComponent = (function () {
@@ -89,6 +89,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map', './p
                 };
                 PostsComponent.prototype.filterByUserId = function (id) {
                     console.log(id);
+                    this.selected = { title: "", body: "" };
                     this.showDetail = false;
                     if (!id) {
                         this.posts = this.allPosts;
@@ -102,7 +103,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map', './p
                         selector: 'posts',
                         templateUrl: 'app/posts.component.html',
                         providers: [posts_service_1.PostsService, users_service_1.UsersService, http_1.HTTP_PROVIDERS],
-                        directives: [spinner_component_1.SpinnerComponent]
+                        directives: [pagination_component_1.PaginationComponent]
                     }), 
                     __metadata('design:paramtypes', [posts_service_1.PostsService, (typeof (_a = typeof users_service_1.UsersService !== 'undefined' && users_service_1.UsersService) === 'function' && _a) || Object])
                 ], PostsComponent);

@@ -6,16 +6,17 @@ import 'rxjs/add/operator/map';
 import {PostsService} from './posts.service';
 import {UsersService} from 'app/users/users.service';
 import {SpinnerComponent} from './spinner.component';
+import {PaginationComponent} from './pagination.component';
 
 @Component({
     selector: 'posts',
     templateUrl: 'app/posts.component.html',
     providers: [PostsService, UsersService, HTTP_PROVIDERS],
-    directives: [SpinnerComponent]
+    directives: [ PaginationComponent ];
 })
 export class PostsComponent implements OnInit{
-    allPosts: any[];
-    posts: any[];
+    allPosts: any[]; // all posts in the database
+    posts: any[]; // posts to be displayed
     users: any[];
     postsLoading: boolean;
 
@@ -79,11 +80,11 @@ export class PostsComponent implements OnInit{
 
     filterByUserId(id: number){
       console.log(id);
+      this.selected = {title: "", body: ""};
       this.showDetail = false;
       if(!id){
         this.posts = this.allPosts;
       }else{
-
         this.getPostsByUserId(id);
       }
     }

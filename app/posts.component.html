@@ -1,13 +1,14 @@
 
 <div class="col-md-6 col-sm-6 col-xl-6">
-  <ul clas="list-group">
+  <ul class="list-group">
     <h1>Posts</h1>
-    <select #opt (change)="filterByUserId(opt.value)">
+    <select class="form-control" #opt (change)="filterByUserId(opt.value)">
       <option value="">
         Select a user...
       </option>
       <option *ngFor="#user of users" value="{{user.id}}">{{user.name}}</option>
     </select>
+    <pagination></pagination>
     <i class="fa fa-spinner fa-spin fa-3x" *ngIf="postsLoading"></i>
     <li
       class="list-group-item"
